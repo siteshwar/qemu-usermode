@@ -1,0 +1,47 @@
+Name: qemu-usermode-static
+Summary: Universal CPU emulator
+Version: 1.0.2011.12
+Release: 1
+Group: System/Emulators/PC
+License: GPLv2
+URL: http://qemu.org
+Sources:
+    - "qemu-linaro-1.0-2011.12.tar.gz"
+    - "qemu-binfmt-conf.sh"
+Description: 
+    QEMU is an extremely well-performing CPU emulator that allows you to  
+    choose between simulating an entire system and running userspace  
+    binaries for different architectures under your native operating  
+    system. It currently emulates x86, ARM, PowerPC and SPARC CPUs as well  
+    as PC and PowerMac systems.  
+SupportOtherDistros: true
+PkgConfigBR:
+    - ext2fs
+    - glib-2.0
+PkgBR:
+    - bison
+    - curl-devel
+    - zlib-static
+    - glibc-static
+    - python-devel
+    - glib2-static
+    - zlib-devel
+Files:
+    - "%{_bindir}/qem*"
+    - "%{_datadir}/qemu"
+    - "%{_sbindir}/qemu-binfmt-conf.sh"
+# Do not specify configure here to allow overriding some options in spec file
+# that %configure would there set
+Configure: none
+#Configure: configure
+#ConfigOptions:
+#    - "--static"
+#    - "--interp-prefix=/usr/share/qemu/qemu-i386"
+#    - "--disable-system"
+#    - "--enable-linux-user"
+#    - "--enable-guest-base"
+#    - "--disable-werror"
+
+Builder: make
+NoAutoLocale: true
+

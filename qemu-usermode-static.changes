@@ -1,0 +1,11 @@
+* Thu Dec 15 2011 Carsten Munk <carsten.munk@gmail.com>
+- Change to qemu-linaro, qemu-linaro-1.0-2011.12.tar.gz
+- Turn into an injection package being exported to ARM
+
+* Thu Oct 20 2011 Marko Saukko <marko.saukko@cybercom.com> - 0.15.1
+- Updated to 0.15.1.
+
+* Sat Sep 17 2011 Mika Laitio <lamikr@pilppa.org> - 0.15-0
+- upstream version of qemu build in usermode enabled as a static binaries
+  to be used in MeeGO CE servers for building packages with obs.
+
