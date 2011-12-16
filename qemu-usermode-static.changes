@@ -1,3 +1,6 @@
+* Fri Dec 16 2011 Carsten Munk <carsten.munk@gmail.com>
+- Revert fix-glibc-install-locales.patch as it breaks glibc compile
+
 * Thu Dec 15 2011 Carsten Munk <carsten.munk@gmail.com>
 - Change to qemu-linaro, qemu-linaro-1.0-2011.12.tar.gz
 - Turn into an injection package being exported to ARM

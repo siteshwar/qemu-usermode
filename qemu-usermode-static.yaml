@@ -26,6 +26,8 @@ PkgBR:
     - python-devel
     - glib2-static
     - zlib-devel
+Patches:
+    - fix-glibc-install-locales.patch
 Files:
     - "%{_bindir}/qem*"
     - "%{_datadir}/qemu"
