@@ -8,7 +8,7 @@
 %global debug_package %{nil}
 # << macros
 
-Name: qemu-usermode-static
+Name:       qemu-usermode
 Summary:    Universal CPU emulator
 Version:    1.0.2011.12
 Release:    1
