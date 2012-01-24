@@ -1,4 +1,7 @@
 * Tue Jan 24 2012 Carsten Munk <carsten.munk@gmail.com>
+- Remove injection package leftover
+
+* Tue Jan 24 2012 Carsten Munk <carsten.munk@gmail.com> 
 - Switch to double-package package, to share sources
 - Exclusive for x86
 
