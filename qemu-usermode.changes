@@ -1,3 +1,7 @@
+* Tue Jan 24 2012 Carsten Munk <carsten.munk@gmail.com>
+- Switch to double-package package, to share sources
+- Exclusive for x86
+
 * Fri Dec 16 2011 Carsten Munk <carsten.munk@gmail.com>
 - Revert fix-glibc-install-locales.patch as it breaks glibc compile
 

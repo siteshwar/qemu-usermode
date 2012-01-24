@@ -14,6 +14,7 @@ Version:    1.0.2011.12
 Release:    1
 Group:      System/Emulators/PC
 License:    GPLv2
+ExclusiveArch:  %{ix86}
 URL:        http://qemu.org
 Source0:    qemu-linaro-1.0-2011.12.tar.gz
 Source1:    qemu-binfmt-conf.sh
