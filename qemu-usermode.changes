@@ -1,3 +1,6 @@
+* Thu Feb 09 2012 Carsten Munk <carsten.munk@gmail.com> - 0.15.1
+- Actually apply MIPS support patch, fix prelink and qmf
+
 * Tue Jan 24 2012 Carsten Munk <carsten.munk@gmail.com>
 - Remove injection package leftover
 

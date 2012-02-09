@@ -29,6 +29,7 @@ PkgBR:
     - glib2-static
 Patches:
     - fix-glibc-install-locales.patch
+    - mips-support.patch
 Files:
     - "%{_bindir}/qem*"
 Configure: none

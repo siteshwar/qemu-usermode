@@ -17,6 +17,7 @@ Source0:    qemu-linaro-1.0-2011.12.tar.gz
 Source1:    qemu-binfmt-conf.sh
 Source100:  qemu-usermode.yaml
 Patch0:     fix-glibc-install-locales.patch
+Patch1:     mips-support.patch
 BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(zlib)
@@ -39,6 +40,8 @@ QEMU is an extremely well-performing CPU emulator that allows you to choose betw
 
 # fix-glibc-install-locales.patch
 %patch0 -p1
+# mips-support.patch
+%patch1 -p1
 # >> setup
 # << setup
 
