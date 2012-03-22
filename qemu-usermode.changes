@@ -1,3 +1,6 @@
+* Thu Mar 22 2012 Carsten Munk <carsten@merproject.org> - 1.0.50.2012.03
+- Upgrade to QEMU-linaro 1.0.50-2012.03
+
 * Thu Feb 09 2012 Carsten Munk <carsten.munk@gmail.com> - 0.15.1
 - Actually apply MIPS support patch, fix prelink and qmf
 
