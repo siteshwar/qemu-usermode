@@ -18,6 +18,7 @@ Source1:    qemu-binfmt-conf.sh
 Source100:  qemu-usermode.yaml
 Patch0:     fix-glibc-install-locales.patch
 Patch1:     mips-support.patch
+Patch2:     0038-linux-user-fix-segfault-deadlock.pa.patch
 BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(zlib)
@@ -42,6 +43,8 @@ QEMU is an extremely well-performing CPU emulator that allows you to choose betw
 %patch0 -p1
 # mips-support.patch
 %patch1 -p1
+# 0038-linux-user-fix-segfault-deadlock.pa.patch
+%patch2 -p1
 # >> setup
 # << setup
 
