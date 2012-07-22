@@ -1,3 +1,8 @@
+* Sun Jul 22 2012 Marko Saukko <marko.saukko@jollamobile.com> - 1.1.50.2012.07
+- Update to 1.1.50.2012.07 from linaro. Rebased mips-support.patch
+- Fixes MER#268: qemu-usermode bugzilla has wrong URL in spec
+- Added pcre-static build requirement for the -static.spec.
+
 * Fri Mar 23 2012 Carsten Munk <carsten@merproject.org> - 1.0.50.2012.03
 - Add 0038-linux-user-fix-segfault-deadlock.pa.patch to fix broken printf
   conftest blocking eglibc 2.15

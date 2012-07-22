@@ -1,16 +1,16 @@
-diff -ru qemu-linaro-0.15.91-2011.11/linux-user/main.c ../qemu-linaro-0.15.91-2011.11/linux-user/main.c
---- qemu-linaro-0.15.91-2011.11/linux-user/main.c	2011-11-08 17:52:44.000000000 +0100
-+++ ../qemu-linaro-0.15.91-2011.11/linux-user/main.c	2011-12-02 21:12:37.126927880 +0100
-@@ -33,6 +33,8 @@
- #include "tcg.h"
+diff --git a/linux-user/main.c b/linux-user/main.c
+index d0e0e4f..611882f 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -34,6 +34,7 @@
  #include "qemu-timer.h"
  #include "envlist.h"
+ #include "elf.h"
 +#include <sys/resource.h>
-+
  
  #define DEBUG_LOGFILE "/tmp/qemu.log"
  
-@@ -3365,6 +3367,17 @@
+@@ -3405,6 +3406,17 @@ int main(int argc, char **argv, char **envp)
          fprintf(stderr, "Unable to find CPU definition\n");
          exit(1);
      }
@@ -26,22 +26,21 @@ diff -ru qemu-linaro-0.15.91-2011.11/linux-user/main.c ../qemu-linaro-0.15.91-20
 +#endif //#if defined(TARGET_MIPS)
 +    
  #if defined(TARGET_I386) || defined(TARGET_SPARC) || defined(TARGET_PPC)
-     cpu_reset(env);
+     cpu_reset(ENV_GET_CPU(env));
  #endif
-Only in ../qemu-linaro-0.15.91-2011.11/linux-user: main.c.orig
-Only in ../qemu-linaro-0.15.91-2011.11/linux-user: main.c.rej
-diff -ru qemu-linaro-0.15.91-2011.11/linux-user/syscall.c ../qemu-linaro-0.15.91-2011.11/linux-user/syscall.c
---- qemu-linaro-0.15.91-2011.11/linux-user/syscall.c	2011-11-08 17:52:44.000000000 +0100
-+++ ../qemu-linaro-0.15.91-2011.11/linux-user/syscall.c	2011-12-02 21:24:11.386700617 +0100
-@@ -95,6 +95,7 @@
- #endif
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 539af3f..e6e762b 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -96,6 +96,7 @@ int __clone2(int (*fn)(void *), void *child_stack_base,
  #include <linux/fb.h>
  #include <linux/vt.h>
+ #include <linux/dm-ioctl.h>
 +#include <sys/epoll.h>
  #include "linux_loop.h"
  #include "cpu-uname.h"
  
-@@ -1163,6 +1164,17 @@
+@@ -1169,6 +1170,17 @@ static abi_long do_pipe(void *cpu_env, abi_ulong pipedes,
          return host_pipe[0];
  #elif defined(TARGET_MIPS)
          ((CPUMIPSState*)cpu_env)->active_tc.gpr[3] = host_pipe[1];
@@ -59,7 +58,7 @@ diff -ru qemu-linaro-0.15.91-2011.11/linux-user/syscall.c ../qemu-linaro-0.15.91
          return host_pipe[0];
  #elif defined(TARGET_SH4)
          ((CPUSH4State*)cpu_env)->gregs[1] = host_pipe[1];
-@@ -3020,8 +3032,12 @@
+@@ -3058,8 +3070,12 @@ static abi_long do_ipc(unsigned int call, int first,
          break;
  
      case IPCOP_semctl:
@@ -74,7 +73,7 @@ diff -ru qemu-linaro-0.15.91-2011.11/linux-user/syscall.c ../qemu-linaro-0.15.91
  
      case IPCOP_msgget:
          ret = get_errno(msgget(first, second));
-@@ -6889,13 +6905,21 @@
+@@ -7354,13 +7370,21 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
      case TARGET_NR_pread64:
          if (!(p = lock_user(VERIFY_WRITE, arg2, arg3, 0)))
              goto efault;
