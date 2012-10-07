@@ -9,13 +9,13 @@ Name:       qemu-usermode-static
 # << macros
 
 Summary:    Universal CPU emulator
-Version:    1.1.50.2012.07
+Version:    1.2.0.2012.09
 Release:    1
 Group:      System/Emulators/PC
 License:    GPLv2
 ExclusiveArch:  %{ix86}
 URL:        https://launchpad.net/qemu-linaro/
-Source0:    qemu-linaro-1.1.50-2012.07.tar.gz
+Source0:    qemu-linaro-1.2.0-2012.09.tar.gz
 Source1:    qemu-binfmt-conf.sh
 Source100:  qemu-usermode.yaml
 Patch0:     fix-glibc-install-locales.patch
@@ -37,7 +37,7 @@ QEMU is an extremely well-performing CPU emulator that allows you to choose betw
 
 
 %prep
-%setup -q -n qemu-linaro-1.1.50-2012.07
+%setup -q -n qemu-linaro-1.2.0-2012.09
 
 # fix-glibc-install-locales.patch
 %patch0 -p1

@@ -1,13 +1,13 @@
 Name: qemu-usermode
 Summary: Universal CPU emulator
-Version: 1.1.50.2012.07
+Version: 1.2.0.2012.09
 Release: 1
 Group: System/Emulators/PC
 License: GPLv2
 URL: https://launchpad.net/qemu-linaro/
 ExclusiveArch: "%{ix86}"
 Sources:
-    - "qemu-linaro-1.1.50-2012.07.tar.gz"
+    - "qemu-linaro-1.2.0-2012.09.tar.gz"
     - "qemu-binfmt-conf.sh"
 Description: 
     QEMU is an extremely well-performing CPU emulator that allows you to  

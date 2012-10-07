@@ -1,3 +1,6 @@
+* Fri Oct 05 2012 Marko Saukko <marko.saukko@jollamobile.com> - 1.2.0.2012.09
+- Update to 1.2.0-2012.09 from linaro.
+
 * Sun Jul 22 2012 Marko Saukko <marko.saukko@jollamobile.com> - 1.1.50.2012.07
 - Update to 1.1.50.2012.07 from linaro. Rebased mips-support.patch
 - Fixes MER#268: qemu-usermode bugzilla has wrong URL in spec
