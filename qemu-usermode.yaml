@@ -1,13 +1,13 @@
 Name: qemu-usermode
 Summary: Universal CPU emulator
-Version: 1.2.0.2012.09
+Version: 1.4.0.2013.03
 Release: 1
 Group: System/Emulators/PC
 License: GPLv2
 URL: https://launchpad.net/qemu-linaro/
 ExclusiveArch: "%{ix86}"
 Sources:
-    - "qemu-linaro-1.2.0-2012.09.tar.gz"
+    - "qemu-linaro-1.4.0-2013.03.tar.gz"
     - "qemu-binfmt-conf.sh"
 Description: 
     QEMU is an extremely well-performing CPU emulator that allows you to  
@@ -19,17 +19,18 @@ PkgConfigBR:
     - ext2fs
     - glib-2.0
     - zlib
+    - python
+    - pixman-1
 PkgBR:
     - bison
     - curl-devel
     - zlib-static
     - glibc-static
-    - python-devel
     - glib2-static
 Patches:
     - fix-glibc-install-locales.patch
     - mips-support.patch
-    - 0038-linux-user-fix-segfault-deadlock.pa.patch
+    - 0017-linux-user-fix-segfault-deadlock.pa.patch
 Files:
     - "%{_bindir}/qem*"
 Configure: none

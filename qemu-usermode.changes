@@ -1,3 +1,11 @@
+* Mon May 06 2013 Marko Saukko <marko.saukko@jollamobile.com> - 1.4.0.2013.03
+- Update to 1.4.0-2013.03 from linaro.
+- Add pixman-1 build dependency.
+- Replaced 0038-linux-user-fix-segfault-deadlock.pa.patch with rebased patch
+  0017-linux-user-fix-segfault-deadlock.pa.patch from openSUSE Virtualization:Qemu/qemu
+  package
+- Rebase mips-support.patch 
+
 * Fri Oct 05 2012 Marko Saukko <marko.saukko@jollamobile.com> - 1.2.0.2012.09
 - Update to 1.2.0-2012.09 from linaro.
 
