@@ -32,6 +32,7 @@ BuildRequires:  zlib-static
 BuildRequires:  glibc-static
 BuildRequires:  python-devel
 BuildRequires:  glib2-static
+BuildRequires:  pcre-static
 
 %description
 QEMU is an extremely well-performing CPU emulator that allows you to choose between simulating an entire system and running userspace binaries for different architectures under your native operating system. It currently emulates x86, ARM, PowerPC and SPARC CPUs as well as PC and PowerMac systems.
