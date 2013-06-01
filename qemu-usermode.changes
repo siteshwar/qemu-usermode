@@ -1,3 +1,6 @@
+* Sat Jun 01 2013 Carsten Munk <carsten.munk@jollamobile.com> - 1.2.0.2012.09
+- Add patches to prevent problems when multithreading on multiple cores
+
 * Fri Oct 05 2012 Marko Saukko <marko.saukko@jollamobile.com> - 1.2.0.2012.09
 - Update to 1.2.0-2012.09 from linaro.
 

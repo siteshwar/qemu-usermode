@@ -26,10 +26,13 @@ PkgBR:
     - glibc-static
     - python-devel
     - glib2-static
+    - pcre-static
 Patches:
     - fix-glibc-install-locales.patch
     - mips-support.patch
     - 0038-linux-user-fix-segfault-deadlock.pa.patch
+    - 0024-linux-user-lock-tcg.patch
+    - 0025-linux-user-Run-multi-threaded-code-on-one-core.patch 
 Files:
     - "%{_bindir}/qem*"
 Configure: none
