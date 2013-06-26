@@ -23,6 +23,7 @@ Patch1:     mips-support.patch
 Patch2:     0038-linux-user-fix-segfault-deadlock.pa.patch
 Patch3:     0024-linux-user-lock-tcg.patch
 Patch4:     0025-linux-user-Run-multi-threaded-code-on-one-core.patch
+Patch5:     fix-strex.patch
 BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(zlib)
@@ -51,6 +52,8 @@ QEMU is an extremely well-performing CPU emulator that allows you to choose betw
 %patch3 -p1
 # 0025-linux-user-Run-multi-threaded-code-on-one-core.patch
 %patch4 -p1
+# fix-strex.patch
+%patch5 -p1
 # >> setup
 # << setup
 
