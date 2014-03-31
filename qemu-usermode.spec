@@ -24,6 +24,7 @@ Patch2:     0038-linux-user-fix-segfault-deadlock.pa.patch
 Patch3:     0024-linux-user-lock-tcg.patch
 Patch4:     0025-linux-user-Run-multi-threaded-code-on-one-core.patch
 Patch5:     fix-strex.patch
+Patch6:     glibc217_fix_librt_configure_test.patch
 BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(zlib)

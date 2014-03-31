@@ -1,3 +1,6 @@
+* Mon Mar 31 2014 Davide Bettio <davide.bettio@ispirata.com> - 1.2.0.2012.09
+- Fix build on glibc 2.17 or newer
+
 * Sat Jun 01 2013 Carsten Munk <carsten.munk@jollamobile.com> - 1.2.0.2012.09
 - Add patches to prevent problems when multithreading on multiple cores
 

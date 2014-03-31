@@ -1,0 +1,15 @@
+diff -Naur a/qemu-linaro-1.2.0-2012.09/configure b/qemu-linaro-1.2.0-2012.09/configure
+--- a/qemu-linaro-1.2.0-2012.09/configure	2012-09-07 14:52:04.000000000 +0200
++++ b/qemu-linaro-1.2.0-2012.09/configure	2014-03-31 14:12:18.831144024 +0200
+@@ -2683,9 +2683,8 @@
+ ##########################################
+ # Do we need librt
+ cat > $TMPC <<EOF
+-#include <signal.h>
+-#include <time.h>
+-int main(void) { return clock_gettime(CLOCK_REALTIME, NULL); }
++#include <mqueue.h>
++int main(void) { return mq_unlink("test"); }
+ EOF
+ 
+ if compile_prog "" "" ; then
