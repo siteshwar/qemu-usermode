@@ -55,6 +55,8 @@ QEMU is an extremely well-performing CPU emulator that allows you to choose betw
 %patch4 -p1
 # fix-strex.patch
 %patch5 -p1
+# glibc217_fix_librt_configure_test.patch
+%patch6 -p2
 # >> setup
 # << setup
 
