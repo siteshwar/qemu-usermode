@@ -1,4 +1,4 @@
-From 04335a4529058c0a9a5821807291ef731716d222 Mon Sep 17 00:00:00 2001
+From f9d767a0740f88f9470166e6cba43d459a7abc1b Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Tue, 10 Jul 2012 20:40:55 +0200
 Subject: [PATCH] linux-user: Run multi-threaded code on a single core
@@ -15,14 +15,14 @@ This gets Java 1.7 working for me again on my test box.
 
 Signed-off-by: Alexander Graf <agraf@suse.de>
 ---
- linux-user/syscall.c |    9 +++++++++
- 1 files changed, 9 insertions(+), 0 deletions(-)
+ linux-user/syscall.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index ed87c54..9f689da 100644
+index 4ce7b84..9218392 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -4352,6 +4352,15 @@ static int do_fork(CPUArchState *env, unsigned int flags, abi_ulong newsp,
+@@ -4427,6 +4427,15 @@ static int do_fork(CPUArchState *env, unsigned int flags, abi_ulong newsp,
          if (nptl_flags & CLONE_SETTLS)
              cpu_set_tls (new_env, newtls);
  

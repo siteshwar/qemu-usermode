@@ -9,22 +9,23 @@ Name:       qemu-usermode
 # << macros
 
 Summary:    Universal CPU emulator
-Version:    1.2.0.2012.09
+Version:    2.1.0
 Release:    1
 Group:      System/Emulators/PC
 License:    GPLv2
 ExclusiveArch:  %{ix86}
 URL:        https://launchpad.net/qemu-linaro/
-Source0:    qemu-linaro-1.2.0-2012.09.tar.gz
+Source0:    qemu-%{version}.tar.bz2
 Source1:    qemu-binfmt-conf.sh
 Source100:  qemu-usermode.yaml
 Patch0:     fix-glibc-install-locales.patch
 Patch1:     mips-support.patch
 Patch2:     0038-linux-user-fix-segfault-deadlock.pa.patch
-Patch3:     0024-linux-user-lock-tcg.patch
-Patch4:     0025-linux-user-Run-multi-threaded-code-on-one-core.patch
-Patch5:     fix-strex.patch
-Patch6:     glibc217_fix_librt_configure_test.patch
+Patch3:     0023-target-arm-linux-user-no-tb_flush-o.patch
+Patch4:     0024-linux-user-lock-tcg.patch
+Patch5:     0025-linux-user-Run-multi-threaded-code-on-one-core.patch
+Patch6:     0026-linux-user-lock-tb-flushing-too.patch
+Patch7:     fix-strex.patch
 BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(zlib)
@@ -41,7 +42,7 @@ QEMU is an extremely well-performing CPU emulator that allows you to choose betw
 
 
 %prep
-%setup -q -n qemu-linaro-1.2.0-2012.09
+%setup -q -n qemu-%{version}
 
 # fix-glibc-install-locales.patch
 %patch0 -p1
@@ -49,14 +50,16 @@ QEMU is an extremely well-performing CPU emulator that allows you to choose betw
 %patch1 -p1
 # 0038-linux-user-fix-segfault-deadlock.pa.patch
 %patch2 -p1
-# 0024-linux-user-lock-tcg.patch
+# 0023-target-arm-linux-user-no-tb_flush-o.patch
 %patch3 -p1
-# 0025-linux-user-Run-multi-threaded-code-on-one-core.patch
+# 0024-linux-user-lock-tcg.patch
 %patch4 -p1
-# fix-strex.patch
+# 0025-linux-user-Run-multi-threaded-code-on-one-core.patch
 %patch5 -p1
-# glibc217_fix_librt_configure_test.patch
-%patch6 -p2
+# 0026-linux-user-lock-tb-flushing-too.patch
+%patch6 -p1
+# fix-strex.patch
+%patch7 -p1
 # >> setup
 # << setup
 

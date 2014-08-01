@@ -1,7 +1,8 @@
-diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfload.c qemu-linaro-1.0-2011.12-fix/linux-user/elfload.c
---- qemu-linaro-1.0-2011.12/linux-user/elfload.c	2011-12-01 22:32:19.000000000 +0100
-+++ qemu-linaro-1.0-2011.12-fix/linux-user/elfload.c	2011-12-16 08:34:20.911646842 +0100
-@@ -967,6 +967,9 @@
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 60777fe..0c15993 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -1231,6 +1231,9 @@ struct exec
  #define ZMAGIC 0413
  #define QMAGIC 0314
  
@@ -11,7 +12,7 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
  /* Necessary parameters */
  #define TARGET_ELF_EXEC_PAGESIZE TARGET_PAGE_SIZE
  #define TARGET_ELF_PAGESTART(_v) ((_v) & ~(unsigned long)(TARGET_ELF_EXEC_PAGESIZE-1))
-@@ -1445,7 +1448,7 @@
+@@ -1789,7 +1792,7 @@ exit_errmsg:
     On return: INFO values will be filled in, as necessary or available.  */
  
  static void load_elf_image(const char *image_name, int image_fd,
@@ -20,7 +21,7 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
                             char bprm_buf[BPRM_BUF_SIZE])
  {
      struct elfhdr *ehdr = (struct elfhdr *)bprm_buf;
-@@ -1513,11 +1516,6 @@
+@@ -1857,11 +1860,6 @@ static void load_elf_image(const char *image_name, int image_fd,
          if (load_addr == -1) {
              goto exit_perror;
          }
@@ -32,7 +33,7 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
      }
      load_bias = load_addr - loaddr;
  
-@@ -1600,33 +1598,6 @@
+@@ -1945,33 +1943,6 @@ static void load_elf_image(const char *image_name, int image_fd,
                      info->brk = vaddr_em;
                  }
              }
@@ -66,7 +67,7 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
          }
      }
  
-@@ -1673,7 +1644,7 @@
+@@ -2018,7 +1989,7 @@ static void load_elf_interp(const char *filename, struct image_info *info,
          memset(bprm_buf + retval, 0, BPRM_BUF_SIZE - retval);
      }
  
@@ -75,7 +76,7 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
      return;
  
   exit_perror:
-@@ -1833,31 +1804,291 @@
+@@ -2174,31 +2145,291 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
  {
      struct image_info interp_info;
      struct elfhdr elf_ex;
@@ -91,16 +92,15 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
 +    int status;
 +    abi_ulong start_code, end_code, start_data, end_data;
 +    abi_ulong elf_stack;
-+
+ 
+-    info->start_mmap = (abi_ulong)ELF_START_MMAP;
+-    info->mmap = 0;
+-    info->rss = 0;
 +    status = 0;
 +    load_addr = 0;
 +    load_bias = 0;
 +    elf_ex = *((struct elfhdr *) bprm->buf);          /* exec-header */
  
--    info->start_mmap = (abi_ulong)ELF_START_MMAP;
--    info->mmap = 0;
--    info->rss = 0;
--
 -    load_elf_image(bprm->filename, bprm->fd, info,
 -                   &elf_interpreter, bprm->buf);
 -
@@ -142,7 +142,7 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
 +            perror("load_elf_binary");
 +            exit(-1);
 +        }
-     }
++    }
 +    bswap_phdr(elf_phdata, elf_ex.e_phnum);
 +
 +    elf_brk = 0;
@@ -258,7 +258,7 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
 +        qemu_log("Relocating guest address space from 0x" TARGET_ABI_FMT_lx
 +                 " to 0x%lx\n", app_start, real_start);
 +        guest_base = real_start - app_start;
-+    }
+     }
 +#endif /* CONFIG_USE_GUEST_BASE */
  
      /* Do this so that we can load the interpreter, if need be.  We will
@@ -380,7 +380,7 @@ diff -ruNx '*.orig' -x '*~' -x '*.rej' qemu-linaro-1.0-2011.12/linux-user/elfloa
  
      if (elf_interpreter) {
          load_elf_interp(elf_interpreter, &interp_info, bprm->buf);
-@@ -1889,7 +2120,6 @@
+@@ -2230,7 +2461,6 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
      if (elf_interpreter) {
          info->load_bias = interp_info.load_bias;
          info->entry = interp_info.entry;
