@@ -119,7 +119,7 @@ mv %{buildroot}%{_bindir}/qemu-mipsel %{buildroot}%{_bindir}/qemu-mipsel-static
 
 %if "%{name}" == "qemu-usermode"
 mv %{buildroot}%{_bindir}/qemu-arm %{buildroot}%{_bindir}/qemu-arm-dynamic
-mv %{buildroot}%{_bindir}/qemu-aarch64 %{buildroot}%{_bindir}/qemu-aarch64-static
+mv %{buildroot}%{_bindir}/qemu-aarch64 %{buildroot}%{_bindir}/qemu-aarch64-dynamic
 mv %{buildroot}%{_bindir}/qemu-mipsel %{buildroot}%{_bindir}/qemu-mipsel-dynamic
 %endif
 # << install post
