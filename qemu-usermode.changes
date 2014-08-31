@@ -1,3 +1,6 @@
+* Sun Aug 31 2014 Carsten Munk <carsten.munk@jolla.com> - 2.1.0
+- Add aarch64 qemu
+
 * Mon Aug 4 2014 Davide Bettio <davide.bettio@ispirata.com> - 2.1.0
 - Update to 2.1.0
 

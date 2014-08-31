@@ -84,7 +84,7 @@ CFLAGS=`echo $CFLAGS | sed 's|-O2|-O|g'` ; export CFLAGS ;
 --enable-linux-user \
 --enable-guest-base \
 --disable-werror \
---target-list=arm-linux-user,mipsel-linux-user
+--target-list=aarch64-linux-user,arm-linux-user,mipsel-linux-user
 # << build pre
 
 
@@ -113,11 +113,13 @@ rm -rf $RPM_BUILD_ROOT/%{_datadir}
 
 %if "%{name}" == "qemu-usermode-static"
 mv %{buildroot}%{_bindir}/qemu-arm %{buildroot}%{_bindir}/qemu-arm-static
+mv %{buildroot}%{_bindir}/qemu-aarch64 %{buildroot}%{_bindir}/qemu-aarch64-static
 mv %{buildroot}%{_bindir}/qemu-mipsel %{buildroot}%{_bindir}/qemu-mipsel-static
 %endif
 
 %if "%{name}" == "qemu-usermode"
 mv %{buildroot}%{_bindir}/qemu-arm %{buildroot}%{_bindir}/qemu-arm-dynamic
+mv %{buildroot}%{_bindir}/qemu-aarch64 %{buildroot}%{_bindir}/qemu-aarch64-static
 mv %{buildroot}%{_bindir}/qemu-mipsel %{buildroot}%{_bindir}/qemu-mipsel-dynamic
 %endif
 # << install post
