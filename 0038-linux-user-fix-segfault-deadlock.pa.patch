@@ -1,7 +1,10 @@
-From 1e747ef08ad5f5901e183cfd2151ae2988fb06ea Mon Sep 17 00:00:00 2001
+From 8c7fb1aeedbdecbd2ccc0af9c21389a2a7e02b96 Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Fri, 13 Jan 2012 17:05:41 +0100
 Subject: [PATCH] linux-user: fix segfault deadlock
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 When entering the guest we take a lock to ensure that nobody else messes
 with our TB chaining while we're doing it. If we get a segfault inside that
@@ -16,15 +19,16 @@ Example code to trigger this is at: http://csgraf.de/tmp/conftest.c
 
 Reported-by: Fabio Erculiani <lxnay@sabayon.org>
 Signed-off-by: Alexander Graf <agraf@suse.de>
+Signed-off-by: Andreas Färber <afaerber@suse.de>
 ---
- qemu-lock.h |   10 ++++++++++
- user-exec.c |    4 ++++
- 2 files changed, 14 insertions(+), 0 deletions(-)
+ include/exec/spinlock.h | 10 ++++++++++
+ user-exec.c             |  4 ++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/qemu-lock.h b/qemu-lock.h
+diff --git a/include/exec/spinlock.h b/include/exec/spinlock.h
 index a72edda..e460e12 100644
---- a/qemu-lock.h
-+++ b/qemu-lock.h
+--- a/include/exec/spinlock.h
++++ b/include/exec/spinlock.h
 @@ -24,6 +24,12 @@
  #include <pthread.h>
  #define spin_lock pthread_mutex_lock
@@ -48,17 +52,17 @@ index a72edda..e460e12 100644
 +
  #endif
 diff --git a/user-exec.c b/user-exec.c
-index abf6885..2826bd1 100644
+index 1ff8673..22f9692 100644
 --- a/user-exec.c
 +++ b/user-exec.c
-@@ -96,6 +96,10 @@ static inline int handle_cpu_signal(unsigned long pc, unsigned long address,
+@@ -94,6 +94,10 @@ static inline int handle_cpu_signal(uintptr_t pc, unsigned long address,
      qemu_printf("qemu: SIGSEGV pc=0x%08lx address=%08lx w=%d oldset=0x%08lx\n",
                  pc, address, is_write, *(unsigned long *)old_set);
  #endif
 +
 +    /* Maybe we're still holding the TB fiddling lock? */
-+    spin_unlock_safe(&tb_lock);
++    spin_unlock_safe(&tcg_ctx.tb_ctx.tb_lock);
 +
      /* XXX: locking issue */
-     if (is_write && page_unprotect(h2g(address), pc, puc)) {
-         return 1;
+     if (is_write && h2g_valid(address)
+         && page_unprotect(h2g(address), pc, puc)) {
