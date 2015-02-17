@@ -1,3 +1,6 @@
+* Tue Feb 17 2015 Carsten Munk <carsten.munk@jolla.com> - 2.1.0
+- Add precheckin.sh to sources.
+
 * Sun Aug 31 2014 Carsten Munk <carsten.munk@jolla.com> - 2.1.0
 - Add aarch64 qemu
 

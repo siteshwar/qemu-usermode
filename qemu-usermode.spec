@@ -17,6 +17,7 @@ ExclusiveArch:  %{ix86}
 URL:        https://launchpad.net/qemu-linaro/
 Source0:    qemu-%{version}.tar.bz2
 Source1:    qemu-binfmt-conf.sh
+Source2:    precheckin.sh
 Source100:  qemu-usermode.yaml
 Patch0:     fix-glibc-install-locales.patch
 Patch1:     mips-support.patch
