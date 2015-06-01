@@ -29,6 +29,7 @@ BuildRequires:  glibc-static
 BuildRequires:  python-devel
 BuildRequires:  glib2-static
 BuildRequires:  pcre-static
+Requires: %{name}-common = %{version}
 
 %description
 QEMU is an extremely well-performing CPU emulator that allows you to choose between simulating an entire system and running userspace binaries for different architectures under your native operating system. It currently emulates x86, ARM, PowerPC and SPARC CPUs as well as PC and PowerMac systems.
@@ -104,15 +105,26 @@ rm -rf $RPM_BUILD_ROOT/%{_datadir}
 %files
 %defattr(-,root,root,-)
 %{_bindir}/qemu-*-dynamic
+%{_sbindir}/qemu-binfmt-conf.sh
+
+%package common
+Summary:  Universal CPU emulator (common utilities)
+Group:      System/Emulators/PC
+
+%description common
+This package provides common qemu utilities.
+
+%files common
+%defattr(-,root,root,-)
 %{_bindir}/qemu-ga
 %{_bindir}/qemu-img
 %{_bindir}/qemu-io
 %{_bindir}/qemu-nbd
-%{_sbindir}/qemu-binfmt-conf.sh
 
 %package static
 Summary:  Universal CPU emulator (static userspace emulators)
 Group:      System/Emulators/PC
+Requires: %{name}-common = %{version}
 
 %description static
 This package provides static builds of userspace CPU emulators.
