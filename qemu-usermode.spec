@@ -116,6 +116,12 @@ rm -rf $RPM_BUILD_ROOT/%{_datadir}
 mv %{buildroot}%{_bindir}/qemu-arm %{buildroot}%{_bindir}/qemu-arm-static
 mv %{buildroot}%{_bindir}/qemu-aarch64 %{buildroot}%{_bindir}/qemu-aarch64-static
 mv %{buildroot}%{_bindir}/qemu-mipsel %{buildroot}%{_bindir}/qemu-mipsel-static
+# Remove these so we don't end up with binaries with the same name in two
+# packages.
+rm -f %{buildroot}%{_bindir}/qemu-ga
+rm -f %{buildroot}%{_bindir}/qemu-img
+rm -f %{buildroot}%{_bindir}/qemu-io
+rm -f %{buildroot}%{_bindir}/qemu-nbd
 %endif
 
 %if "%{name}" == "qemu-usermode"
