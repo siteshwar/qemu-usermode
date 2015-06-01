@@ -1,3 +1,6 @@
+# Target architectures to build emulators of
+%define target_list aarch64 arm mipsel
+
 Name:       qemu-usermode
 Summary:    Universal CPU emulator
 Version:    2.1.0
@@ -62,7 +65,7 @@ CONFIGURE_FLAGS="--prefix=/usr \
     --enable-linux-user \
     --enable-guest-base \
     --disable-werror \
-    --target-list=aarch64-linux-user,arm-linux-user,mipsel-linux-user"
+    --target-list=$((for target in %{target_list}; do echo -n ${target}-linux-user,; done) | sed -e 's/,$//')"
 
 for mode in static dynamic; do
     mkdir build-$mode
@@ -84,9 +87,9 @@ install -m 755 %{SOURCE1} $RPM_BUILD_ROOT/usr/sbin
 for mode in static dynamic; do
     cd build-$mode
     %make_install
-    mv %{buildroot}%{_bindir}/qemu-arm %{buildroot}%{_bindir}/qemu-arm-$mode
-    mv %{buildroot}%{_bindir}/qemu-aarch64 %{buildroot}%{_bindir}/qemu-aarch64-$mode
-    mv %{buildroot}%{_bindir}/qemu-mipsel %{buildroot}%{_bindir}/qemu-mipsel-$mode
+    for target in %{target_list}; do
+        mv %{buildroot}%{_bindir}/qemu-${target} %{buildroot}%{_bindir}/qemu-${target}-${mode}
+    done
     cd ..
 done
 
