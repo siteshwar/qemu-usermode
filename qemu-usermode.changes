@@ -1,3 +1,7 @@
+* Fri Jun 05 2015 Islam Amer <islam.amer@jolla.com> - 2.1.0-5
+- Build qemu-usermode-static as subpackage of qemu-usermode (from thp)
+- Only build dynamic qemu-img binaries to resolve MER#1050 (from thp)
+
 * Tue Feb 17 2015 Carsten Munk <carsten.munk@jolla.com> - 2.1.0
 - Add precheckin.sh to sources.
 

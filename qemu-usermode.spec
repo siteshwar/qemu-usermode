@@ -4,7 +4,7 @@
 Name:       qemu-usermode
 Summary:    Universal CPU emulator
 Version:    2.1.0
-Release:    1
+Release:    5
 Group:      System/Emulators/PC
 License:    GPLv2
 ExclusiveArch:  %{ix86}
