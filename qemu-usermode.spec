@@ -7,7 +7,7 @@ Version:    2.1.0
 Release:    5
 Group:      System/Emulators/PC
 License:    GPLv2
-ExclusiveArch:  %{ix86}
+ExclusiveArch:  %{ix86} x86_64
 URL:        https://launchpad.net/qemu-linaro/
 Source0:    qemu-%{version}.tar.bz2
 Source1:    qemu-binfmt-conf.sh
